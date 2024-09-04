@@ -1,0 +1,5 @@
+# Ignore virtual environment files
+movierecom/
+Lib/
+ml-100k/
+Scripts/activate/

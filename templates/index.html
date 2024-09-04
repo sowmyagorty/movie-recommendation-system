@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommender</title>
+    <!-- Link to Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: url('static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 100px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        input[type="text"] {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #e50914;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #b81d24;
+        }
+        .sample-movies {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .sample-movies h4 {
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            background: #333;
+            margin: 5px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+        ul li img {
+            width: 50px;
+            height: 75px;
+            margin-right: 15px;
+            border-radius: 5px;
+        }
+        a {
+            color: #e50914;
+        }
+        a:hover {
+            color: #b81d24;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Recommendation System</h1>
+        <form action="/recommend" method="POST">
+            <label for="movie">Enter a movie name:</label>
+            <input type="text" id="movie" name="movie" required>
+            <input type="submit" value="Get Recommendations">
+        </form>
+
+        <div class="sample-movies">
+            <h4>Try searching for:</h4>
+            <ul>
+                <li> Toy Story (1995)</li>
+                <li> GoldenEye (1995)</li>
+                <li> Four Rooms (1995)</li>
+                <li> Get Shorty (1995)</li>
+            </ul>
+        </div>
+
+        {% if recommendations %}
+        <h2>Recommendations for "{{ movie_name }}":</h2>
+        <ul>
+            {% for movie in recommendations.index %}
+            <li>{{ movie }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
